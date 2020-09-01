@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!--<meta charset="utf-8">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+    
+        <script>//it helps to have the jquery.com opened so that you know which method you want
+        //basically jQuery(). is equivalent to document.getElementByxxx("")
+        //jQuery is now just a $ sign
+        $(document).ready(function() { //as the document is loading go and run this function
+            $("html").append(
+            //that means target the html tag and append a string "<body>\"
+            // the \ is because at this point we are using html elements within the javascript (script)
+            // note the double quote to start the html instructions within the script
+                "<body>\
+                    <div id='container'>\
+                        <div id='inner'>\
+                            <h1>Basic jQuery</h1>\
+                            <p id='1'>Paragraph 1</p>\
+                            <p id='2'>Paragrah 2</p>\
+                            <p id='3'>Paragraph 3</p>\
+                         </div>\
+                    </div id='pics'>By Clicking on any image below, you will know the picture's index. See button at bottom of pictures for other effects.<br>\
+                        <div id='div1'>\
+                            <img src='thumbnail_7.jpg'></div>\
+                        <div id='div2'>\
+                            <img src='thumbnail_8.jpg'></div>\
+                        <div id='div3'>\
+                            <img src='thumbnail_1.jpg'></div><br>\
+                        <button>Click here to fade in/out of pics</button><br>\
+                    </div>\
+                </body>" // note the ending double quote
+            );//end of append statement
+
+            
+            //now we can call another jQuery to modify what we just appended
+            //here we want to change the color of text contained in the paragraph (css style)
+            // $ = jQuery
+            $("#2").css({"color": "red"}); // this reads target the p id 2 tag, 
+            // (# indicates id)and affect its css by changing the text color to red
+            
+            //$("img").css({"display": "block"}); // this reads target the p id 2 tag, 
+            // (# indicates id)and affect its css by changing the text color to red
+
+
+            $("#3").click(function () { //target p3, and when p3 is clicked
+                $('h1').hide(); // make h1 disappear
+            }//end of function
+            );//end of click method
+
+            //per assignment, use the event method using jQuery
+            // here making the h1 element come back in view
+            $("img").each(function(i){
+                $(this).on("click", {x:i}, function(event){
+                alert("This picture has " + event.data.x + " for index in the array");
+                });
+            });
+            //per assignment, use the effect method using jQuery
+            //here making all pics fade out or face back in by clicking button
+            $("button").click(function(){
+                $("#div1").fadeToggle(3000);
+                $("#div2").fadeToggle(2500);
+                $("#div3").fadeToggle(2000);
+            });    //end of function, end of method        
+  
+        }//end of function
+        );//end of ready
+
+ 
+            
+            //slowly toggle the display of all images
+            //$("img").toggle("slow");
+
+            //$("info").click(function () {
+            //   $('info').append('For futher information, call your broker at 999-876-5432');
+            //    }//end of function
+            //   );//end of method
+ 
+        //$("img").hover(function () { //target p3, and when p3 is clicked
+              //  $('pics').unhide(); // make h1 disappear
+            //}//end of function
+            //);//end of click method
+
+
+        //});
+        //so without this code the html has nothing on it.
+        //with the jQuery code, we inserted something on the html page
+        </script>
+    
+</html>
